@@ -6,13 +6,15 @@ import html from 'remark-html'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
+function findIdFromFileName(fileName: string): string {
+  return fileName.match(/(?<=\d-).*(?=\.md$)/)[0] || '';
+}
+
 export function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory)
   const allPostsData: any[] = fileNames.map(fileName => {
-    // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, '')
-
+    const id = findIdFromFileName(fileName)
     // Read markdown file as string
     const fullPath = path.join(postsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
@@ -38,31 +40,20 @@ export function getSortedPostsData() {
 
 export function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory)
-
-  // Returns an array that looks like this:
-  // [
-  //   {
-  //     params: {
-  //       id: 'ssg-ssr'
-  //     }
-  //   },
-  //   {
-  //     params: {
-  //       id: 'pre-rendering'
-  //     }
-  //   }
-  // ]
   return fileNames.map(fileName => {
+    const id = findIdFromFileName(fileName);
     return {
       params: {
-        id: fileName.replace(/\.md$/, '')
+        id
       }
     }
   })
 }
 
 export async function getPostData(id) {
-  const fullPath = path.join(postsDirectory, `${id}.md`)
+  const fileNames = fs.readdirSync(postsDirectory)
+  const file = fileNames.find((file: string) => file.match(id))
+  const fullPath = path.join(postsDirectory, file)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
   // Use gray-matter to parse the post metadata section

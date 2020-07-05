@@ -36,7 +36,7 @@ img {
   @apply text-gray-700 leading-relaxed break-words;
 }
 
-.markdown>*+* {
+.markdown>* {
   @apply mt-0 mb-4;
 }
 

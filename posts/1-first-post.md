@@ -11,7 +11,7 @@ Welcome! This is the first post on my new blog. I created this blog to kick-star
 - Improve my writing skills
 - Serve as a starting point to anything else I would like to add to my website (e.g. a portfolio)
 
-![unsplash](./photo-1466692476868-aef1dfb1e735.jpeg)
+<img src="/images/sprouting-plants.jpeg" alt="sprouting plants" class="w-full" />
 
 There are definitely some advantages to creating a personal website. It lets you point to something to show people more about yourself and allows you to show off a few skills as a software developer. To create the blog I decided to follow [this guide](https://medium.freecodecamp.org/how-to-write-a-blog-using-gatsby-from-your-phone-e92a99851a04) to setup a Gatsby starter on GitHub pages and use TravisCI for deployment. I found it to be pretty straightforward. I could have gone the [Wordpress](//wordpress.com) or [Ghost](https://ghost.org/) route but figured [Gatsby](https://.gatsbyjs.org) would give me more flexibility for customizing my website in the future. I already know React and GraphQL seems interesting to learn.
 
