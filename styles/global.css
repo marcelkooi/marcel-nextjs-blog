@@ -124,4 +124,8 @@ img {
   @apply border py-1 px-3;
 }
 
+.markdown p>img {
+  @apply my-8;
+}
+
 /* End markdown */
