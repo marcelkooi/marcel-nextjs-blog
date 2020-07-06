@@ -1,6 +1,5 @@
 ---
-title: Scheduling AWS EC2 instances on Elastic Beanstalk
-categories: ["tech"]
+title: Scheduling AWS EC2 Instances on Elastic Beanstalk
 date: '2018-09-27'
 ---
 

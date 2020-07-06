@@ -1,7 +1,5 @@
 ---
 title: First Post
-categories: ["habits"]
-cover: photo-1466692476868-aef1dfb1e735.jpeg
 date: '2018-09-12'
 ---
 
