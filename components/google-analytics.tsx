@@ -14,7 +14,7 @@ export default function GoogleAnalytics({ GATag }: { GATag: string }): JSX.Eleme
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', ${GATag});
+                gtag('config', '${GATag}');
             `,
         }}
       />
