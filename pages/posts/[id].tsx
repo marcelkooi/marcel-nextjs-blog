@@ -3,11 +3,14 @@ import { getAllPostIds, getPostData } from '../../lib/posts';
 import Date from '../../components/date'
 import Head from 'next/head'
 
-export default function Post({ postData }) {
+export default function Post({ postData, id }) {
+  const canonicalUrl = `https://marcelkooi.com/posts/${id}`
+
   return (
     <Layout home={null}>
       <Head>
         <title>{postData.title}</title>
+        <link rel="canonical" href={canonicalUrl}/>
       </Head>
       <div className="text-3xl font-semibold mb-5">
         {postData.title}
@@ -32,7 +35,8 @@ export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)
   return {
     props: {
-      postData
+      postData,
+      id: params.id
     }
   }
 }
