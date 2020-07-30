@@ -21,17 +21,27 @@ You might have code that looks like the following:
 You CURL your API locally and see what you get when you enter 20.
 
 ```
-$ curl -X POST localhost:3000 --data '{ "input": 20 }' -H "Content-Type: application/json"
+$ curl -X POST localhost:3000 \
+    --data '{ "input": 20 }' \
+    -H "Content-Type: application/json"
 The new number is: 30
 ```
 
 Sweet. Seems to be working.
 
-The next day, you try 30. But this time, you put quotes around your input for some reason.
+The next day, you try entering 50. But this time, you put quotes around your input for some reason.
 
 ```
-$ curl -X POST localhost:3000 --data '{ "input": "30" }' -H "Content-Type: application/json"
-The new number is: 3010
+$ curl -X POST localhost:3000 \
+    --data '{ "input": "50" }' \
+    -H "Content-Type: application/json"
+The new number is: 5010
 ```
 
-Hmmm, OK. Not what you were expecting.
+Hmmm, OK. Not what you were expecting. Let's check out the code.
+
+The `addTen` function says the `input` variable is a number. So it must always be a number, right?
+
+Not quite.
+
+With TypeScript, you can't explicity enter a string as an argument to the `addTen` function (without throwing a TS error), but it will let you enter an argument of type `any` for an argument that has to be a number, which is what anything coming off the request body will be.
