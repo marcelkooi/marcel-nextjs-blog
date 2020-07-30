@@ -16,7 +16,7 @@ Let's see how this works in practice. Say you had an API that lets users enter a
 
 You might have code that looks like the following:
 
-<script src="https://github.com/marcelkooi/typescript-example/blob/095eb7e1821e56389380a8e6b4b76e092d00ddea/src/index.ts"></script>
+<script src="http://gist-it.appspot.com/https://github.com/marcelkooi/typescript-example/blob/095eb7e1821e56389380a8e6b4b76e092d00ddea/src/index.ts"></script>
 
 You CURL your API locally and see what you get when you enter 20.
 
