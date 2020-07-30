@@ -14,14 +14,15 @@ module.exports = {
         }
       }
     ],
-    [
-      '@fullhuman/postcss-purgecss',
-      {
-        content: [
-          './posts/*.md',
-        ],
-        defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
-      }
-    ]
+    // [
+    //   '@fullhuman/postcss-purgecss',
+    //   {
+    //     content: [
+    //       './posts/*.md',
+    //       './pages/*.tsx',
+    //     ],
+    //     defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+    //   }
+    // ]
   ]
 }
