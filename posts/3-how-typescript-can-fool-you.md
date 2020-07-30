@@ -16,7 +16,7 @@ Let's see how this works in practice. Say you had an API that lets users enter a
 
 You might have code that looks like the following:
 
-<script src="http://gist-it.appspot.com/https://github.com/marcelkooi/typescript-example/blob/f5e99a2e8a4d886b55ed9fbd4342ea5a3ce4e602/src/index.ts"></script>
+<script src="https://github.com/marcelkooi/typescript-example/blob/095eb7e1821e56389380a8e6b4b76e092d00ddea/src/index.ts"></script>
 
 You CURL your API locally and see what you get when you enter 20.
 
@@ -44,4 +44,14 @@ The `addTen` function says the `input` variable is a number. So it must always b
 
 Not quite.
 
-With TypeScript, you can't explicity enter a string as an argument to the `addTen` function (without throwing a TS error), but it will let you enter an argument of type `any` for an argument that has to be a number, which is what anything coming off the request body will be.
+With TypeScript, you can't explicity enter a string as an argument to the `addTen` function (without throwing a TS error), but it will let you enter an argument of type `any` for an argument that has to be a number. In this case, anything coming off the request body will be of type `any`, and to the compiler that means it _could_ be a number, so no complaints there.
+
+So what now?
+
+You have a few options:
+1. Leave the code as is, and make sure you only send in numbers (integers or floats) and not strings
+2. Change the code so that if you pass in a string, it gets parsed as an integer (e.g. `parseInt(input, 10)`)
+3. Add a runtime data validation library such as [joi](https://github.com/sideway/joi) or [io-ts](https://github.com/gcanti/io-ts)
+4. Keep returning wrong data (no judgment)
+
+Hope that helps!
