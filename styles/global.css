@@ -33,10 +33,10 @@ img {
 }
 
 .markdown {
-  @apply text-gray-700 leading-relaxed break-words;
+  @apply text-gray-900 leading-normal break-words;
 }
 
-.markdown>* {
+.markdown>*+* {
   @apply mt-0 mb-4;
 }
 
@@ -97,7 +97,7 @@ img {
 }
 
 .markdown pre code {
-  @apply block bg-transparent p-0 overflow-visible rounded-none;
+  @apply block bg-transparent p-0 overflow-scroll rounded-none;
 }
 
 .markdown ul {
@@ -124,8 +124,9 @@ img {
   @apply border py-1 px-3;
 }
 
-.markdown p>img {
-  @apply my-8;
+/* Override pygments style background color. */
+.markdown .highlight pre {
+  @apply bg-gray-100 !important;
 }
 
 /* End markdown */
