@@ -14,16 +14,33 @@ One thing to understand about TypeScript is that it helps you catch type errors 
 
 Let's see how this works in practice. Say you had an API that lets users enter a number, and it will return that number plus 10. Probably not the most useful API, but someone is paying you to build it, so why not.
 
-You might have code that looks like the following:
+You might have [code](https://github.com/marcelkooi/typescript-example/blob/095eb7e1821e56389380a8e6b4b76e092d00ddea/src/index.ts) that looks like the following:
 
-<script src="http://gist-it.appspot.com/https://github.com/marcelkooi/typescript-example/blob/095eb7e1821e56389380a8e6b4b76e092d00ddea/src/index.ts"></script>
+```typescript
+import express, { Request, Response } from 'express';
+import bodyParser from 'body-parser';
+const app = express();
+const port = 3000;
+
+const addTen = (input: number): number => {
+  return input + 10;
+}
+
+app
+  .use(bodyParser.json())
+  .post('/', (req: Request, res: Response) => {
+    const { input } = req.body;
+    const newNum = addTen(input);
+    res.send(`The new number is: ${newNum}`);
+  });
+
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+```
 
 You CURL your API locally and see what you get when you enter 20.
 
 ```
-$ curl -X POST localhost:3000 \
-    --data '{ "input": 20 }' \
-    -H "Content-Type: application/json"
+$ curl -X POST localhost:3000 --data '{ "input": 20 }' -H "Content-Type: application/json"
 The new number is: 30
 ```
 
@@ -32,9 +49,7 @@ Sweet. Seems to be working.
 The next day, you try entering 50. But this time, you put quotes around your input for some reason.
 
 ```
-$ curl -X POST localhost:3000 \
-    --data '{ "input": "50" }' \
-    -H "Content-Type: application/json"
+$ curl -X POST localhost:3000 --data '{ "input": "50" }' -H "Content-Type: application/json"
 The new number is: 5010
 ```
 
