@@ -59,7 +59,7 @@ The `addTen` function says the `input` variable is a number. So it must always b
 
 Not quite.
 
-With TypeScript, you can't explicity enter a string as an argument to the `addTen` function (without throwing a TS error), but it will let you enter an argument of type `any` for an argument that has to be a number. In this case, anything coming off the request body will be of type `any`, and to the compiler that means it _could_ be a number, so no complaints there.
+With TypeScript, you can't explicity enter a string as an argument to the `addTen` function without throwing a TS error. If you wrote a unit test for that function, you would get a compiler error when trying to use a string input. However, you are able to  enter an argument of type `any` for an argument that has to be a number. In this case, anything coming off the request body will be of type `any`, and to the compiler that means it _could_ be a number, so no complaints there.
 
 So what now?
 
@@ -68,5 +68,7 @@ You have a few options:
 2. Change the code so that if you pass in a string, it gets parsed as an integer (e.g. `parseInt(input, 10)`)
 3. Add a runtime data validation library such as [joi](https://github.com/sideway/joi) or [io-ts](https://github.com/gcanti/io-ts)
 4. Keep returning wrong data (no judgment)
+
+The key takeaway is to remember that the inputs to your app might be different than what you were expecting. Things like user inputs, database queries, and API requests can return data that is a different type than you may have specified it would be, and it's important to be aware of that.
 
 Hope that helps!
