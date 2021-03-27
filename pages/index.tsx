@@ -7,7 +7,7 @@ import { getSortedProjectsData } from '../lib/projects'
 import Link from 'next/link'
 import Date from '../components/date'
 
-function formatProjectTime(startTime, endTime) {
+function formatProjectTime(startTime: string, endTime: string): string {
   const start = startTime ? `${startTime} — ` : '';
   const end = endTime ? endTime : 'present';
   return start + end;

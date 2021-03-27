@@ -28,7 +28,7 @@ export function getSortedProjectsData() {
       ...matterResult.data
     }
   })
-  return allProjectData;
+  return allProjectData.reverse();
 }
 
 export function getAllProjectIds() {
