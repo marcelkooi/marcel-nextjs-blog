@@ -1,5 +1,6 @@
 import Layout from '../../components/layout';
 import { getAllProjectIds, getProjectData } from '../../lib/projects';
+import utilStyles from '../../styles/utils.module.css'
 import Head from 'next/head'
 
 export default function Project({ projectData, id }) {
@@ -14,6 +15,11 @@ export default function Project({ projectData, id }) {
       <div className="text-3xl font-semibold mb-5">
         {projectData.title}
       </div>
+      { projectData.url && (
+        <div className={utilStyles.lightText}>
+          <a href={projectData.url} target="_blank" rel="noopener noreferrer">{projectData.url}</a>
+        </div>)
+      }
       <div dangerouslySetInnerHTML={{ __html: projectData.contentHtml }}  className="markdown mt-3" />
     </Layout>
   )
