@@ -3,10 +3,17 @@ import Layout, { siteTitle } from '../components/layout'
 // @ts-ignore
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
+import { getSortedProjectsData } from '../lib/projects'
 import Link from 'next/link'
 import Date from '../components/date'
 
-export default function Home ({ allPostsData }) {
+function formatProjectTime(startTime, endTime) {
+  const start = startTime ? `${startTime} — ` : '';
+  const end = endTime ? endTime : 'present';
+  return start + end;
+}
+
+export default function Home ({ allPostsData, allProjectsData }) {
   return (
     <Layout home>
       <Head>
@@ -31,15 +38,33 @@ export default function Home ({ allPostsData }) {
           ))}
         </ul>
       </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Projects</h2>
+        <ul className={utilStyles.list}>
+          {allProjectsData.map(({ id, title, startTime, endTime }) => (
+            <li className={utilStyles.listItem} key={id}>
+              <Link href="/projects/[id]" as={`/projects/${id}`}>
+                <a className="text-blue-500 hover:underline">{title}</a>
+              </Link>
+              <br />
+              <small className={utilStyles.lightText}>
+                {formatProjectTime(startTime, endTime)}
+              </small>
+            </li>
+          ))}
+        </ul>
+      </section>
     </Layout>
   )
 }
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
+  const allProjectsData = getSortedProjectsData()
   return {
     props: {
-      allPostsData
+      allPostsData,
+      allProjectsData,
     }
   }
 }
