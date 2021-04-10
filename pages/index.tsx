@@ -20,7 +20,7 @@ export default function Home ({ allPostsData, allProjectsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hello, I'm Marcel. I'm a software engineer based out of Philadelphia.</p>
+        <p>Hi, I'm Marcel. I'm a software engineer based out of Columbus.</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
