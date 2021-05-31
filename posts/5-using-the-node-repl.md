@@ -7,7 +7,7 @@ The Node REPL is a useful tool for experimenting with different packages.
 
 <br>
 
-For example, if I wanted to make sure that the functions I'm using in the `date-fns` package behaved as expected, I can start a node REPL session, import the package, and test out some of its functionality:
+For example, if I wanted to see how a few of the `date-fns` functions worked, I could start a Node REPL session, import the package, and test them out:
 
 ```sh
 $ node
